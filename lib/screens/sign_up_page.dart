@@ -87,7 +87,7 @@ class _SignUpPageState extends State<SignUpPage> {
                             confirmPasswordController),
                         isLoading
                             ? CircularProgressIndicator()
-                            : loginButton(getNewsAPI, 'Sign Up'),
+                            : loginButton(handleSignUp, 'Sign Up'),
                         SizedBox(height: 10),
                         optionsTextContainer(),
                         loginOptionsIcon(),
