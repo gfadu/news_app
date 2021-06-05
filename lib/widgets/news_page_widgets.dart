@@ -33,7 +33,8 @@ Widget bottomButtons(context, text, icon, iconcolor, setPage, selectedPage) {
       width: MediaQuery.of(context).size.width * 0.5,
       child: TextButton(
         style: TextButton.styleFrom(
-            backgroundColor: selectedPage == text ? Colors.blue : Colors.white,
+            backgroundColor:
+                selectedPage == text ? Color(0xff4267B2) : Colors.white,
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(10),

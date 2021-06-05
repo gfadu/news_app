@@ -1,14 +1,11 @@
 import 'package:flutter/cupertino.dart';
 
-import 'dart:async';
-
 class News with ChangeNotifier {
   final int id;
   final String title;
   final String summary;
   final String published;
   bool isFavourite;
-  
 
   News(
       {required this.id,
@@ -21,8 +18,6 @@ class News with ChangeNotifier {
     isFavourite = !isFavourite;
     notifyListeners();
   }
-
-
 
   void autoLogout() {}
 }

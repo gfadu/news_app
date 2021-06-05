@@ -20,19 +20,3 @@ Future<void> main() async {
         )),
   ));
 }
-
-// class MyApp extends StatelessWidget {
-//   @override
-//   Widget build(BuildContext context) {
-//     return ChangeNotifierProvider(
-//       create: (ctx) => NewsProvider(),
-//       child: MaterialApp(
-//           debugShowCheckedModeBanner: false,
-//           home: Builder(
-//             builder: (BuildContext context) {
-//               return status ==true ? LoginPage();
-//             },
-//           )),
-//     );
-//   }
-// }

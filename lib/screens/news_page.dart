@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:new_app/models/news_model.dart';
-import 'package:new_app/screens/login_page.dart';
+import '../widgets/fav_news.dart';
 import '../widgets/news_page_widgets.dart';
-import '../widgets/news_column.dart';
+import '../widgets/news_container.dart';
 import 'package:new_app/providers/news_provider.dart';
 import 'package:provider/provider.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class NewsPage extends StatefulWidget {
   const NewsPage({Key? key}) : super(key: key);
@@ -75,102 +73,5 @@ class NewWidget extends StatelessWidget {
               value: newsData[index],
               child: selectedpage == "News" ? NewsContainer() : FavNews(),
             ));
-  }
-}
-
-class NewsContainer extends StatelessWidget {
-  const NewsContainer({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    final individualNews = Provider.of<News>(context);
-    return Container(
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(10),
-        color: Colors.white,
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black12,
-            blurRadius: 10.0,
-          )
-        ],
-      ),
-      margin: EdgeInsets.symmetric(vertical: 5),
-      width: MediaQuery.of(context).size.width,
-      padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          InkWell(
-            onTap: () {
-              individualNews.toggleFavourite();
-            },
-            child: Icon(
-              Icons.favorite_outline,
-              size: 50,
-            ),
-          ),
-          SizedBox(
-            width: 5,
-          ),
-          NewsColumn(
-            header: individualNews.title,
-            summary: individualNews.summary,
-            published: individualNews.published,
-          )
-        ],
-      ),
-    );
-  }
-}
-
-class FavNews extends StatelessWidget {
-  const FavNews({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    final individualNews = Provider.of<News>(context);
-    return individualNews.isFavourite
-        ? Container(
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(10),
-              color: Colors.white,
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.black12,
-                  blurRadius: 10.0,
-                )
-              ],
-            ),
-            margin: EdgeInsets.symmetric(vertical: 5),
-            width: MediaQuery.of(context).size.width,
-            padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                InkWell(
-                  onTap: () {
-                    individualNews.toggleFavourite();
-                  },
-                  child: Icon(
-                    Icons.favorite,
-                    color: Colors.pink,
-                    size: 50,
-                  ),
-                ),
-                SizedBox(
-                  width: 5,
-                ),
-                NewsColumn(
-                  header: individualNews.title,
-                  summary: individualNews.summary,
-                  published: individualNews.published,
-                )
-              ],
-            ),
-          )
-        : Container();
   }
 }
